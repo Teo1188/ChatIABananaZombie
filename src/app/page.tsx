@@ -14,9 +14,20 @@ export default function Home() {
       })
   }).then(res => res.json())
     .then(data => {
-      console.log(data);
+      fetch('/api/generate-image', {
+        method: 'POST',
+        body: JSON.stringify({
+          imagePrompt: data.imagePrompt
+        })
+      }).then(res => res.json())
+        .then(imageData => {
+          console.log('Generated Image: ', imageData);
+        })
+        .catch(error => {
+          console.error('Error generating image:', error);
+        });
     })
-    .catch(error => {
+      .catch(error => {
       console.error('Error fetching story:', error);
     });
   })

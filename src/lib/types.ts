@@ -24,6 +24,10 @@ export interface GenerateStoryRequest {
   isStart: boolean;
 }
 
+export interface GenerateImageRequest {
+    imagePrompt: string;
+}
+
 export interface GenerateStoryResponse {
     narrative: string;
     imagePrompt: string;
